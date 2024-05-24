@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="
+http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!--	 This is our bean-->
+	<bean class="com.springcore.Student" name="student1">
+		<property name="studentId" value="2424">
+			<!--	<value>2244</value>-->
+		</property>
+
+		<property name="studentName" value="Mahesh Kakde"></property>
+		<property name="studentAddress" value="Pune"></property>
+	</bean>
+
+	<bean class="com.springcore.Student" name="student2">
+		<property name="studentId" value="1234"></property>
+		<property name="studentName" value="Kiran"></property>
+		<property name="studentAddress" value="Jalna"></property>
+	</bean>
+
+	<bean class="com.springcore.Student" name="student3" p:studentId="2345"
+		p:studentName="Sham" p:studentAddress="Abad"></bean>
+
+	<!--Injecting List-->
+
+	<bean class="com.springcore.Student" name="student4">
+		<property name="studentId" value="1"></property>
+		<property name="studentName" value="Jack"></property>
+		<property name="studentAddress" value="Uk"></property>
+		<property name="libraryBooks">
+			<!--<value>
+				<list>"HcVerma"</list>
+			</value>-->
+
+			<list>
+				<value>HcVerma</value>
+				<value>ABC of Physics</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="com.springcore.collections.Emp" name="Emp">
+		<property name="name" value="Kiran"></property>
+		<property name="phones">
+			<list>
+				<value>8669038598</value>
+				<value>12345678</value>
+			</list>
+
+		</property>
+
+		<property name="address">
+			<set>
+				<value>Hari Om Nagar</value>
+				<value>Station Road</value>
+				<value>Station Road</value>
+			</set>
+		</property>
+
+		<property name="courses">
+			<map>
+				<entry key="Java" value="2" />
+				<entry key="Java" value="2" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean class = "com.springcore.ref.B" name="bref">
+		<property name = "y" value="90"></property>
+	</bean>
+	
+	<bean class="com.springcore.ref.A" name="aref">
+		<property name="x" value="12"></property>
+		<property name="ob">
+			<ref bean="bref"/>
+		</property>
+	</bean>
+	
+	
+	<!--Configuration Using Constructor Injection-->
+	
+	<bean class="com.springcore.ci.Person" name ="person">
+		<constructor-arg>
+			<value>Mahesh</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+			<value> 101</value>
+		</constructor-arg>
+	</bean>
+	
+	<!--For addition class-->
+	
+	<bean class="com.springcore.ci.Addition" name="addition">
+		<constructor-arg>
+			<value>12</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+			<value>12</value>
+		</constructor-arg>
+	</bean>
+
+</beans>
